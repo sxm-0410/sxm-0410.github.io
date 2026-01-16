@@ -16,6 +16,11 @@
       color: #e0e0e0;
       background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 50%, #0f1419 100%);
       overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     /* Animated background particles */
@@ -80,7 +85,7 @@
       transition: transform 0.3s ease;
     }
 
-    .logo:hover {
+    .logo:hover, .logo:active {
       transform: scale(1.05);
     }
 
@@ -96,6 +101,7 @@
       font-weight: 500;
       position: relative;
       transition: color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .nav-links a::after {
@@ -109,11 +115,11 @@
       transition: width 0.3s ease;
     }
 
-    .nav-links a:hover {
+    .nav-links a:hover, .nav-links a:active {
       color: #00ffff;
     }
 
-    .nav-links a:hover::after {
+    .nav-links a:hover::after, .nav-links a:active::after {
       width: 100%;
     }
 
@@ -184,9 +190,10 @@
       transition: all 0.3s ease;
       animation: fadeInUp 1s ease-out 0.4s both;
       box-shadow: 0 10px 30px rgba(0, 173, 181, 0.3);
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .cta-button:hover {
+    .cta-button:hover, .cta-button:active {
       transform: translateY(-3px);
       box-shadow: 0 15px 40px rgba(0, 173, 181, 0.5);
     }
@@ -236,9 +243,10 @@
       backdrop-filter: blur(10px);
       border: 1px solid rgba(255, 255, 255, 0.05);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .about-content:hover {
+    .about-content:hover, .about-content:active {
       transform: translateY(-5px);
       box-shadow: 0 20px 40px rgba(0, 173, 181, 0.2);
     }
@@ -261,6 +269,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .skill::before {
@@ -274,11 +283,11 @@
       transition: left 0.5s ease;
     }
 
-    .skill:hover::before {
+    .skill:hover::before, .skill:active::before {
       left: 100%;
     }
 
-    .skill:hover {
+    .skill:hover, .skill:active {
       transform: translateY(-10px) scale(1.05);
       border-color: #00ffff;
       box-shadow: 0 20px 40px rgba(0, 173, 181, 0.3);
@@ -308,6 +317,7 @@
       cursor: pointer;
       position: relative;
       overflow: hidden;
+      -webkit-tap-highlight-color: transparent;
     }
 
     .project-card::before {
@@ -322,11 +332,11 @@
       transform: scale(0);
     }
 
-    .project-card:hover::before {
+    .project-card:hover::before, .project-card:active::before {
       transform: scale(1);
     }
 
-    .project-card:hover {
+    .project-card:hover, .project-card:active {
       transform: translateY(-15px);
       border-color: #00ffff;
       box-shadow: 0 25px 50px rgba(0, 173, 181, 0.4);
@@ -362,9 +372,10 @@
       color: #00ffff;
       text-decoration: none;
       transition: color 0.3s ease;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .contact-info a:hover {
+    .contact-info a:hover, .contact-info a:active {
       color: #00adb5;
     }
 
@@ -387,9 +398,11 @@
       transition: all 0.3s ease;
       color: #00ffff;
       font-weight: 600;
+      text-decoration: none;
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .social-link:hover {
+    .social-link:hover, .social-link:active {
       background: rgba(0, 173, 181, 0.2);
       border-color: #00ffff;
       transform: translateY(-5px);
@@ -418,8 +431,17 @@
         justify-content: center;
       }
 
+      .hero {
+        padding: 6rem 2rem 4rem;
+      }
+
       .section {
         padding: 4rem 5%;
+      }
+
+      .about-content {
+        padding: 2rem;
+        font-size: 1.1rem;
       }
 
       .skills-grid {
@@ -427,8 +449,85 @@
         gap: 1rem;
       }
 
+      .skill {
+        padding: 1.5rem 1rem;
+      }
+
+      .skill-name {
+        font-size: 1.1rem;
+      }
+
       .projects-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .project-card {
+        padding: 2rem;
+      }
+
+      .project-card h3 {
+        font-size: 1.4rem;
+      }
+
+      .cta-button {
+        padding: 0.9rem 2rem;
+        font-size: 1rem;
+      }
+
+      /* Reduce transform effects on mobile for better touch experience */
+      .skill:hover, .skill:active {
+        transform: translateY(-5px) scale(1.02);
+      }
+
+      .project-card:hover, .project-card:active {
+        transform: translateY(-8px);
+      }
+
+      .about-content:hover, .about-content:active {
+        transform: translateY(-3px);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .logo {
+        font-size: 1.5rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        font-size: 0.9rem;
+      }
+
+      .hero h2 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.8rem;
+      }
+
+      .about-content {
+        padding: 1.5rem;
+        font-size: 1rem;
+      }
+
+      .skills-grid {
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+      }
+
+      .project-card {
+        padding: 1.5rem;
+      }
+
+      .social-link {
+        width: 45px;
+        height: 45px;
+        font-size: 0.9rem;
       }
     }
   </style>
@@ -465,11 +564,11 @@
     <h2 class="section-title">About Me</h2>
     <div class="about-content">
       <p>
-        I’m a B.Tech Computer Science student (AIML) at Woxsen University, graduating in 2028.
+        I'm a B.Tech Computer Science student (AIML) at Woxsen University, graduating in 2028.
         I like building things that actually work from full-stack web apps to AI-driven systems.
         <br><br>
         My interests sit at the intersection of <strong>software engineering, AI, audio processing, and system design</strong>.
-        When I’m not coding, I’m usually playing guitar, working on music-related projects, or leading tech & cultural initiatives.
+        When I'm not coding, I'm usually playing guitar, working on music-related projects, or leading tech & cultural initiatives.
       </p>
     </div>
   </section>
@@ -564,6 +663,21 @@
     <p>© 2026 Sampath Bageyawadi.</p>
   </footer>
 
-  <!-- SCRIPT UNCHANGED -->
+  <script>
+    // Create animated particles
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 15; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      particle.style.width = Math.random() * 10 + 5 + 'px';
+      particle.style.height = particle.style.width;
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDelay = Math.random() * 20 + 's';
+      particle.style.animationDuration = Math.random() * 10 + 15 + 's';
+      particlesContainer.appendChild(particle);
+    }
+  </script>
+
 </body>
 </html>
